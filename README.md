@@ -228,7 +228,7 @@ We provide downloadable evaluation outputs for different model releases. Summary
 | Model | Release | Benchmarks | All results (download) | Summary tables |
 | --- | --- | --- | --- | --- |
 | `ReCo_ori` | 2025-12 | ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_all_results_2025_m12) | The ReCo paper |
-| `ReCo_ref` | 2026-04 | RefViE-bench, OpenVE-bench, ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_ref_all_results_2026_m4) | `ReCo-Bench/ReCo_Ref_results_md/` |
+| `ReCo_ref` | 2026-04 | RefViE-bench, OpenVE-bench, ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_ref_all_results_2026_m4) | [ReCo-Bench/ReCo_Ref_results_md/](https://github.com/HiDream-ai/ReCo/tree/main/ReCo-Bench/ReCo_Ref_results_md) |
 
 ## 🏃 Inference
 
