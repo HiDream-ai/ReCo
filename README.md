@@ -34,7 +34,7 @@ Here, we will gradually release the following resources, including:
   - **ReCo_ref**: Our ReCo architecture naturally supports IP-reference-conditioned video editing. We further trained a multi-task IP-conditioned editing model with additional Kiwi-Edit data.
     - Released training code for `ReCo_ref`, including a mixed dataloader with Kiwi-Edit data.
     - Released inference code for `ReCo_ref`.
-    - Released `ReCo_ref` inference videos, intermediate outputs, and final results on **ReCo-Bench**, **RefViE-Bench**, and **OpenVE-Bench**.
+    - Released `ReCo_ref` inference videos, intermediate outputs, and final results on **ReCo-Bench**, **RefViE-Bench**, and **OpenVE-Bench**. See [ReCo-Bench/ReCo_Ref_results_md/](https://github.com/HiDream-ai/ReCo/tree/main/ReCo-Bench/ReCo_Ref_results_md)
 
   - **ReCo_ori**: We released two variants, `2025_m12` with stronger overall performance and `2026_01_16_v1` with improved removal performance.
     - Released `ReCo_ori` inference videos, intermediate outputs, and final results on **ReCo-Bench**.
