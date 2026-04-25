@@ -1,0 +1,3 @@
+python tools\step_0_convert_diffstudio_into_diffusers.py
+
+python tools\step_1_inference_vace_diffusers_unip.py

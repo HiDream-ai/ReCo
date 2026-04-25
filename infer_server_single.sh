@@ -4,7 +4,7 @@
 conda activate reco
 
 # ===== 公共参数 =====
-CKPT_1="all_ckpts/2026_01_16_v1_release_preview.ckpt"
+CKPT_1="all_ckpts/ReCo_ori_rank128-2025_m12_version.ckpt"
 
 # run each_task 
 python inference_reco_single.py --test_txt_file_name assets/replace_test.txt --task_name replace --lora_ckpt $CKPT_1

@@ -29,15 +29,28 @@ Here, we will gradually release the following resources, including:
 </div>
 
 ## 📢 News!!!
+
+- **2026.04.25**: Updates released today:
+  - **ReCo_ref**: Our ReCo architecture naturally supports IP-reference-conditioned video editing. We further trained a multi-task IP-conditioned editing model with additional Kiwi-Edit data.
+    - Released training code for `ReCo_ref`, including a mixed dataloader with Kiwi-Edit data.
+    - Released inference code for `ReCo_ref`.
+    - Released `ReCo_ref` inference videos, intermediate outputs, and final results on **ReCo-Bench**, **RefViE-Bench**, and **OpenVE-Bench**.
+
+  - **ReCo_ori**: We released two variants, `2025_m12` with stronger overall performance and `2026_01_16_v1` with improved removal performance.
+    - Released `ReCo_ori` inference videos, intermediate outputs, and final results on **ReCo-Bench**.
+    - Released a Diffusers-based implementation script for `ReCo_ori` supporting 30-step sampling; note that it uses direct parameter conversion and may incur some quality loss. See `tools/run_reco_diffusers.sh`.
+    - Added region-loss training code. See `tools\train_reco_add_region_loss_raw.py`.
+
+
 - 2026.03.05: We are excited to see that [Kiwi-Edit (NUS)](https://github.com/showlab/Kiwi-Edit/tree/main) has further refined our **HQ-ReCo dataset** and added reference image pairs. Check out their [DATASET.md](https://github.com/showlab/Kiwi-Edit/blob/main/DATASET.md) for further instructions.
 
 ## 🔥 Updates
-- \[2025.12.22\] Upload Our arXiv Paper.
-- \[2025.12.23\] Release ReCo-Data and Usage code.
-- \[2025.12.23\] Release ReCo-Bench and evaluation code.
+- \[2026.02.26\] Release training code.
 - \[2026.01.16\] Release ReCo Model weights and inference code.
 - \[2026.01.16\] Uploaded raw [video object masks](https://huggingface.co/datasets/HiDream-ai/ReCo-Data/tree/main/video_masks) to ReCo-Data.
-- \[2026.02.26\] Release training code.
+- \[2025.12.23\] Release ReCo-Data and Usage code.
+- \[2025.12.23\] Release ReCo-Bench and evaluation code.
+- \[2025.12.22\] Upload Our arXiv Paper.
 
 
 
@@ -154,7 +167,7 @@ For local editing tasks (add, remove, and replace), we utilize **Gemini-2.5-Flas
 
 ---
 
-### Downloading ReCo-Bench
+### 1. Downloading ReCo-Bench
 Please download **ReCo-Bench** into the `./ReCo-Bench` directory by running:
 ```bash
 bash ./tools/download_ReCo-Bench.sh
@@ -166,9 +179,7 @@ bash ./tools/download_ReCo-Bench.sh
 
 
 
-### Usage
-
-
+### 2. Usage
 
 After downloading the benchmark, you can directly start the evaluation using:
 ```bash
@@ -210,7 +221,14 @@ This step produces the final benchmark scores for each task as well as the overa
 
 </details>
 
+### 3. Benchmark Results (Downloads and Summaries)
 
+We provide downloadable evaluation outputs for different model releases. Summary tables/markdown files are stored in this repository, while full result packages are hosted on Hugging Face.
+
+| Model | Release | Benchmarks | All results (download) | Summary tables |
+| --- | --- | --- | --- | --- |
+| `ReCo_ori` | 2025-12 | ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_all_results_2025_m12) | The ReCo paper |
+| `ReCo_ref` | 2026-04 | RefViE-bench, OpenVE-bench, ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_ref_all_results_2026_m4) | `ReCo-Bench/ReCo_Ref_results_md/` |
 
 ## 🏃 Inference
 
@@ -248,9 +266,14 @@ You need to prepare both the base model and our specific checkpoints.
       <td>Base VACE weights. Place in <code>./Wan-AI</code></td>
     </tr>
     <tr>
-      <td align="center"><b>ReCo</b></td>
-      <td align="center"><a href="https://huggingface.co/HiDream-ai/ReCo">🤗 Hugging Face</a></td>
-      <td>Our ReCo checkpoint. Place in <code>all_ckpts/</code>.</td>
+      <td align="center"><b>ReCo_ori</b></td>
+      <td align="center"><a href="https://huggingface.co/HiDream-ai/ReCo/blob/main/ReCo_ori_rank128-2025_m12_version.ckpt">🤗 Hugging Face</a></td>
+      <td>Our original ReCo checkpoint trained on the four editing tasks. Place in <code>all_ckpts/</code>.</td>
+    </tr>
+    <tr>
+      <td align="center"><b>ReCo_ref</b></td>
+      <td align="center"><a href="https://huggingface.co/HiDream-ai/ReCo/blob/main/ReCo_ref_rank256-2026_m4_version.ckpt">🤗 Hugging Face</a></td>
+      <td>Our multi-task editing checkpoint with IP-reference conditioning, additionally fine-tuned on Kiwi-Edit data. Supports IP-guided background replacement, object replacement, and object addition. Place in <code>all_ckpts/</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -260,7 +283,8 @@ You need to prepare both the base model and our specific checkpoints.
 .
 ├── Wan-AI/                      
 ├── all_ckpts/                   
-│   └── 2026_01_16_v1_release.ckpt  
+│   └── ReCo_ori_rank128-2025_m12_version.ckpt
+|   |__ ReCo_ref_rank256-2026_m4_version.ckpt
 ├── assets/                      
 └── inference_reco_single.py
 ```
@@ -279,10 +303,8 @@ To run a specific task manually or customize the execution, use the python comma
 python inference_reco_single.py \
     --task_name replace \
     --test_txt_file_name assets/replace_test.txt \
-    --lora_ckpt all_ckpts/2026_01_16_v1_release.ckpt
+    --lora_ckpt ReCo_ori_rank128-2025_m12_version.ckpt
 ```
-
-### 4. Key Arguments Explained
 
 | Argument | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -292,26 +314,60 @@ python inference_reco_single.py \
 | `base_wan_folder` | `str` | `./Wan-AI` | Path to the pre-trained Wan-AI model weights. |
 | `lora_ckpt` | `str` | `all_ckpts/...` | Path to the specific LoRA checkpoint file. |
 
+### 4. Running Inference with IP condition
+
+Run the IP-conditioned inference script:
+
+```bash
+bash infer_server_single_ref_rank256.sh
+```
+
+This script calls `inference_reco_single_ref.py` and demonstrates different modes: prompt-only, IP-image-only, first-frame-only, or using both IP image and first-frame conditioning together.
 
 
 ## 🚀 Training
 
-To start training, run:
+### 1) Basic Training
+
+Run:
 
 ```bash
 bash train.sh
 ```
 
-### ⚠️ Important Notes
+Before launching training:
 
-* Make sure to update the **pretrained model weight paths** in the script to match your local environment.
-* In `train.py`, modify the dataset paths inside
-  `LightningModelForTrain.train_dataloader`:
+* Update the **pretrained model weight paths** in your script to match local paths.
+* In `train.py`, update dataset paths in `LightningModelForTrain.train_dataloader`:
+  * **JSON annotation directory**
+  * **Video data directory**
 
-  * Update the **JSON annotation directory**
-  * Update the **video data directory**
+### 2) Multi-task Training with IP Reference Data
 
-Ensure these paths point to your local dataset before launching training.
+We additionally provide multi-task training code with IP-image references, which additionally supports:
+
+* background replacement with a given reference image
+* object replacement with a given reference image
+* object addition with a given reference image
+
+To start this training pipeline, follow two steps:
+
+**Step 1. Prepare data configs and local paths**
+
+1. Download task config/data package from  
+   [kiwidata.zip](https://huggingface.co/HiDream-ai/ReCo/blob/main/kiwidata/kiwidata.zip),  
+   then place/extract it under the current project.
+2. Update related configs in:
+   * `train_multitask_add_kiwi_ref_data.py` (around `196-210`)
+   * `kiwidata/test_dataset_mixdata.py` (around `32-54`)
+
+**Step 2. Launch training**
+
+```bash
+bash train_multitask_add_kiwi_ref_data_2node.sh
+```
+
+This pipeline includes mixed data loading from **ReCo-Data**, **DiTTO**, and **OpenVE-3M**, and also integrates kiwi-edit paired IP-reference data. The `kiwidata` folder provides our filtered and organized config files that better match the original dataset formats. Feel free to use and adapt them.
 
 
 ## 🌟 Star and Citation

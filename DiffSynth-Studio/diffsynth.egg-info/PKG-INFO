@@ -1,4 +1,4 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.4
 Name: diffsynth
 Version: 1.1.7
 Summary: Enjoy the magic of Diffusion models!
@@ -23,6 +23,7 @@ Requires-Dist: modelscope
 Requires-Dist: ftfy
 Dynamic: author
 Dynamic: classifier
+Dynamic: license-file
 Dynamic: requires-dist
 Dynamic: requires-python
 Dynamic: summary
