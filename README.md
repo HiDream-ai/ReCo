@@ -45,6 +45,7 @@ Here, we will gradually release the following resources, including:
 - **2026.03.05**: We are excited to see that [Kiwi-Edit (NUS)](https://github.com/showlab/Kiwi-Edit/tree/main) has further refined our **HQ-ReCo dataset** and added reference image pairs. Check out their [DATASET.md](https://github.com/showlab/Kiwi-Edit/blob/main/DATASET.md) for further instructions.
 
 ## 🔥 Updates
+- [x] **2026.04.25** Release ReCo_Ref-related code.
 - [x] **2026.02.26** Release training code.
 - [x] **2026.01.16** Release ReCo model weights and inference code.
 - [x] **2026.01.16** Upload raw [video object masks](https://huggingface.co/datasets/HiDream-ai/ReCo-Data/tree/main/video_masks) to ReCo-Data.
