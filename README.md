@@ -30,6 +30,10 @@ Here, we will gradually release the following resources, including:
 
 ## 📢 News!!!
 
+- **Dataset Usage**: We are excited to see our **ReCo-Data** being used for model training in [Mamoda2.5](https://arxiv.org/pdf/2605.02641v1), [SAMA](https://arxiv.org/pdf/2603.19228), [LIVE](https://arxiv.org/pdf/2604.17021), [Kiwi-Edit](https://arxiv.org/pdf/2603.02175), [ISA](https://arxiv.org/pdf/2605.04569), etc. Thanks for these great works!
+
+- **2026.05.01**: ReCo has been accepted to **ICML 2026**. We will update the latest paper version soon.
+
 - **2026.04.25**: Updates released today:
   - **ReCo_ref**: Our ReCo architecture naturally supports IP-reference-conditioned video editing. We further trained a multi-task IP-conditioned editing model with additional Kiwi-Edit data.
     - Released training code for `ReCo_ref`, including a mixed dataloader with Kiwi-Edit data.
