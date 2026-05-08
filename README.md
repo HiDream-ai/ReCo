@@ -35,7 +35,7 @@ Here, we will gradually release the following resources, including:
 - **2026.05.01**: ReCo has been accepted to **ICML 2026**. We will update the latest paper version soon.
 
 - **2026.04.25**: Updates released today:
-  - **ReCo_ref**: Our ReCo architecture naturally supports IP-reference-conditioned video editing. We further trained a multi-task IP-conditioned editing model with additional Kiwi-Edit data.
+  - **ReCo_ref**: Our ReCo architecture naturally supports IP-reference-conditioned video editing. We further trained a multi-task IP-conditioned editing model with additional Kiwi-Edit data. Additional capabilities include： **IP+text- or text-conditioned object replacement, object insertion, and background changes.**
     - Released training code for `ReCo_ref`, including a mixed dataloader with Kiwi-Edit data.
     - Released inference code for `ReCo_ref`.
     - Released `ReCo_ref` inference videos, intermediate outputs, and final results on **ReCo-Bench**, **RefViE-Bench**, and **OpenVE-Bench**. See [ReCo-Bench/ReCo_Ref_results_md/](https://github.com/HiDream-ai/ReCo/tree/main/ReCo-Bench/ReCo_Ref_results_md)
