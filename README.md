@@ -30,7 +30,7 @@ Here, we will gradually release the following resources, including:
 
 ## 📢 News!!!
 
-- **Dataset Usage**: We are excited to see our **ReCo-Data** being used for model training in [Mamoda2.5](https://arxiv.org/pdf/2605.02641v1), [SAMA](https://arxiv.org/pdf/2603.19228), [LIVE](https://arxiv.org/pdf/2604.17021), [Kiwi-Edit](https://arxiv.org/pdf/2603.02175), [ISA](https://arxiv.org/pdf/2605.04569), etc. Thanks for these great works!
+- **Dataset Usage**: We are excited to see our **ReCo-Data** being used for model training in [Mamoda2.5](https://arxiv.org/pdf/2605.02641v1), [SAMA](https://arxiv.org/pdf/2603.19228), [LIVE](https://arxiv.org/pdf/2604.17021), [Kiwi-Edit](https://arxiv.org/pdf/2603.02175), [ISA](https://arxiv.org/pdf/2605.04569), etc. We sincerely thank these great works for building upon **ReCo-Data**. As of now, **ReCo-Data** has reached **26.3K downloads**, with a peak monthly download count of **9.75K**. 🎉🚀 We greatly appreciate the community's interest and support.
 
 - **2026.05.01**: ReCo has been accepted to **ICML 2026**. We will update the latest paper version soon.
 
