@@ -190,7 +190,7 @@ if __name__ == "__main__":
 
     model_manager = ModelManager(device="cpu")
     model_manager.load_models(ckpt_list, torch_dtype=torch.bfloat16)
-    pipe = WanVideoPipeline.from_model_manager(model_manager, torch_dtype=torch.bfloat16, device="cuda")
+    pipe = WanVideoPipeline.from_model_manager(model_manager, torch_dtype=torch.bfloat16, device="mps")
 
     if use_lora:
         add_lora_to_model(

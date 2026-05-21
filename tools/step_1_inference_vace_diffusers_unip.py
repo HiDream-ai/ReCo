@@ -17,7 +17,7 @@ pipe = WanVACEPipeline.from_pretrained(
     vae=vae,
 )
 pipe.scheduler = UniPCMultistepScheduler.from_config(pipe.scheduler.config, flow_shift=flow_shift)
-pipe.to("cuda")
+pipe.to("mps")
 
 pipe.vae.enable_slicing()
 pipe.vae.enable_tiling()

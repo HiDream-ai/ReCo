@@ -1,3 +1,5 @@
+import os
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 import torch
 from diffsynth import ModelManager, WanVideoPipeline, save_video
 from PIL import Image
@@ -23,9 +25,8 @@ def seed_everything(seed: int):
     os.environ['PYTHONHASHSEED'] = str(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+    if torch.backends.mps.is_available():
+        torch.mps.manual_seed(seed)
 
 
 
@@ -245,9 +246,9 @@ if __name__ == "__main__":
     model_manager = ModelManager(device="cpu")
     model_manager.load_models(
         ckpt_list,
-        torch_dtype=torch.bfloat16,
+        torch_dtype=torch.float16,
     )
-    pipe = WanVideoPipeline.from_model_manager(model_manager, torch_dtype=torch.bfloat16, device="cuda")
+    pipe = WanVideoPipeline.from_model_manager(model_manager, torch_dtype=torch.float16, device="mps")
 
     if use_lora:
         # Load LoRA weights
