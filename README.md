@@ -42,7 +42,7 @@ Here, we will gradually release the following resources, including:
   - **ReCo_ref**: Our ReCo architecture naturally supports IP-reference-conditioned video editing. We further trained a multi-task IP-conditioned editing model with additional Kiwi-Edit data. Additional capabilities include： **IP+text- or text-conditioned object replacement, object insertion, and background changes.**
     - Released training code for `ReCo_ref`, including a mixed dataloader with Kiwi-Edit data.
     - Released inference code for `ReCo_ref`.
-    - Released `ReCo_ref` inference videos, intermediate outputs, and final results on **ReCo-Bench**, **RefViE-Bench**, and **OpenVE-Bench**. See [ReCo-Bench/ReCo_Ref_results_md/](https://github.com/HiDream-ai/ReCo/tree/main/ReCo-Bench/ReCo_Ref_results_md)
+    - Released `ReCo_ref` inference videos, intermediate outputs, and final results on **ReCo-Bench**, **RefViE-Bench**, and **OpenVE-Bench**. See [Benchmark Results](#-benchmark-results) for RefViE / OpenVE summary tables and download links.
 
   - **ReCo_ori**: We released two variants, `2025_m12` with stronger overall performance and `2026_01_16_v1` with improved removal performance.
     - Released `ReCo_ori` inference videos, intermediate outputs, and final results on **ReCo-Bench**.
@@ -63,6 +63,56 @@ Here, we will gradually release the following resources, including:
 
 
 
+
+## 📊 Benchmark Results
+
+Scores for `ReCo` / `ReCo_ref` on ReCo-Bench, RefViE-Bench, and OpenVE-Bench. Full packages are on Hugging Face; the live ReCo-Bench leaderboard (more methods) is on the [project page](https://zhw-zhang.github.io/ReCo-page/#reco-bench-leaderboard).
+
+| Model | Release | Benchmarks | All results (download) |
+| --- | --- | --- | --- |
+| `ReCo_ori` | 2025-12 | ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_all_results_2025_m12) |
+| `ReCo_ref` | 2026-04 | RefViE-bench, OpenVE-bench, ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_ref_all_results_2026_m4) |
+
+### ReCo-Bench (`ReCo` / `ReCo_ref`)
+
+Total scores under **Gemini-2.5-flash-thinking**, matching the [ReCo-Bench Leaderboard](https://zhw-zhang.github.io/ReCo-page/#reco-bench-leaderboard). Higher is better.
+
+| Approach | Add | Remove | Replace | Style |
+| --- | --- | --- | --- | --- |
+| InsViE | 3.05 | 3.16 | 3.17 | 7.91 |
+| Lucy-Edit | 6.31 | – | 6.72 | 4.83 |
+| Ditto | 7.56 | – | 6.58 | 9.01 |
+| VACE | – | 5.19 | – | – |
+| ReCo | 8.23 | 7.00 | 8.74 | 9.17 |
+| ReCo_Ref | 8.02 | 7.65 | 8.13 | 9.12 |
+| VInO | 8.85 | 8.16 | 8.70 | 9.10 |
+| Mamoda2.5 | 8.80 | 8.67 | 9.06 | 8.99 |
+
+### RefViE-Bench (`ReCo_ref`)
+
+| Model | Identity Consist. | Temporal Consist. | Physical Consist. | Reference Sim. | Matting Quality | Video Quality | Overall |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ReCo_Ref | 2.90 | 2.64 | 2.49 | 2.65 | 2.00 | 1.58 | 2.48 |
+| Runway Aleph | 3.79 | 3.65 | 3.58 | 3.33 | 2.81 | 2.58 | 3.29 |
+| Kling-O1 | 4.75 | 4.66 | 4.60 | 3.95 | 3.21 | 2.75 | 3.99 |
+| Kiwi-Edit (All data) | 3.51 | 2.96 | 2.91 | 3.40 | 2.58 | 2.40 | 2.96 |
+| Kiwi-Edit (Ref. data only) | 3.98 | 3.40 | 3.34 | 3.72 | 2.90 | 2.51 | 3.31 |
+
+### OpenVE-Bench (`ReCo_ref`)
+
+| Method | #Params | #Reso. | Overall ↑ | Global Style ↑ | Background Change ↑ | Local Change ↑ | Local Remove ↑ | Local Add ↑ |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| VACE | 14B | 1280×720 | 1.57 | 1.49 | 1.55 | 2.07 | 1.46 | 1.26 |
+| OmniVideo | 1.3B | 640×352 | 1.19 | 1.11 | 1.18 | 1.14 | 1.14 | 1.36 |
+| InsViE | 2B | 720×480 | 1.45 | 2.20 | 1.06 | 1.48 | 1.36 | 1.17 |
+| Lucy-Edit | 5B | 1280×704 | 2.22 | 2.27 | 1.57 | 3.20 | 1.75 | 2.30 |
+| ICVE | 13B | 384×240 | 2.18 | 2.22 | 1.62 | 2.57 | 2.51 | 1.97 |
+| DITTO | 14B | 832×480 | 2.13 | 4.01 | 1.68 | 2.03 | 1.53 | 1.41 |
+| OpenVE-Edit | 5B | 1280×704 | 2.50 | 3.16 | 2.36 | 2.98 | 1.85 | 2.15 |
+| ReCo_Ref | 2.1B | 832×480 | 2.80 | 3.96 | 1.92 | 3.70 | 2.24 | 2.17 |
+| Kiwi-Edit (Stage-2 Instruct-Only) | 5B | 720×480 | 2.92 | 3.54 | 3.80 | 2.59 | 2.55 | 2.12 |
+| Kiwi-Edit (Stage-2 Instruct-Only) | 5B | 1280×704 | 2.98 | 3.54 | 3.84 | 2.57 | 2.71 | 2.25 |
+| Kiwi-Edit (Stage-3 Instruct-Reference) | 5B | 1280×704 | 3.02 | 3.64 | 2.64 | 3.83 | 2.63 | 2.36 |
 
 ## 📊 ReCo-Data Preparation
 
@@ -232,12 +282,7 @@ This step produces the final benchmark scores for each task as well as the overa
 
 ### 3. Benchmark Results (Downloads and Summaries)
 
-We provide downloadable evaluation outputs for different model releases. Summary tables/markdown files are stored in this repository, while full result packages are hosted on Hugging Face.
-
-| Model | Release | Benchmarks | All results (download) | Summary tables |
-| --- | --- | --- | --- | --- |
-| `ReCo_ori` | 2025-12 | ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_all_results_2025_m12) | The ReCo paper |
-| `ReCo_ref` | 2026-04 | RefViE-bench, OpenVE-bench, ReCo-Bench | [Hugging Face](https://huggingface.co/datasets/HiDream-ai/ReCo-Bench/tree/main/reco_ref_all_results_2026_m4) | [ReCo-Bench/ReCo_Ref_results_md/](https://github.com/HiDream-ai/ReCo/tree/main/ReCo-Bench/ReCo_Ref_results_md) |
+Summary tables for RefViE-Bench / OpenVE-Bench and download links are in [Benchmark Results](#-benchmark-results) above. ReCo-Bench summary markdown remains under [`ReCo-Bench/ReCo_Ref_results_md/`](https://github.com/HiDream-ai/ReCo/tree/main/ReCo-Bench/ReCo_Ref_results_md).
 
 ## 🏃 Inference
 
