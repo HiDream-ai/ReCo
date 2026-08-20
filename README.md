@@ -83,10 +83,10 @@ Total scores under **Gemini-2.5-flash-thinking**, matching the [ReCo-Bench Leade
 | Lucy-Edit | 6.31 | – | 6.72 | 4.83 |
 | Ditto | 7.56 | – | 6.58 | 9.01 |
 | VACE | – | 5.19 | – | – |
-| ReCo | 8.23 | 7.00 | 8.74 | 9.17 |
+| ReCo | 8.23 | 7.00 | 8.74 | **9.17** |
 | ReCo_Ref | 8.02 | 7.65 | 8.13 | 9.12 |
-| VInO | 8.85 | 8.16 | 8.70 | 9.10 |
-| Mamoda2.5 | 8.80 | 8.67 | 9.06 | 8.99 |
+| VInO | **8.85** | 8.16 | 8.70 | 9.10 |
+| Mamoda2.5 | 8.80 | **8.67** | **9.06** | 8.99 |
 
 ### RefViE-Bench (`ReCo_ref`)
 
@@ -94,7 +94,7 @@ Total scores under **Gemini-2.5-flash-thinking**, matching the [ReCo-Bench Leade
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ReCo_Ref | 2.90 | 2.64 | 2.49 | 2.65 | 2.00 | 1.58 | 2.48 |
 | Runway Aleph | 3.79 | 3.65 | 3.58 | 3.33 | 2.81 | 2.58 | 3.29 |
-| Kling-O1 | 4.75 | 4.66 | 4.60 | 3.95 | 3.21 | 2.75 | 3.99 |
+| Kling-O1 | **4.75** | **4.66** | **4.60** | **3.95** | **3.21** | **2.75** | **3.99** |
 | Kiwi-Edit (All data) | 3.51 | 2.96 | 2.91 | 3.40 | 2.58 | 2.40 | 2.96 |
 | Kiwi-Edit (Ref. data only) | 3.98 | 3.40 | 3.34 | 3.72 | 2.90 | 2.51 | 3.31 |
 
@@ -107,12 +107,12 @@ Total scores under **Gemini-2.5-flash-thinking**, matching the [ReCo-Bench Leade
 | InsViE | 2B | 720×480 | 1.45 | 2.20 | 1.06 | 1.48 | 1.36 | 1.17 |
 | Lucy-Edit | 5B | 1280×704 | 2.22 | 2.27 | 1.57 | 3.20 | 1.75 | 2.30 |
 | ICVE | 13B | 384×240 | 2.18 | 2.22 | 1.62 | 2.57 | 2.51 | 1.97 |
-| DITTO | 14B | 832×480 | 2.13 | 4.01 | 1.68 | 2.03 | 1.53 | 1.41 |
+| DITTO | 14B | 832×480 | 2.13 | **4.01** | 1.68 | 2.03 | 1.53 | 1.41 |
 | OpenVE-Edit | 5B | 1280×704 | 2.50 | 3.16 | 2.36 | 2.98 | 1.85 | 2.15 |
 | ReCo_Ref | 2.1B | 832×480 | 2.80 | 3.96 | 1.92 | 3.70 | 2.24 | 2.17 |
 | Kiwi-Edit (Stage-2 Instruct-Only) | 5B | 720×480 | 2.92 | 3.54 | 3.80 | 2.59 | 2.55 | 2.12 |
-| Kiwi-Edit (Stage-2 Instruct-Only) | 5B | 1280×704 | 2.98 | 3.54 | 3.84 | 2.57 | 2.71 | 2.25 |
-| Kiwi-Edit (Stage-3 Instruct-Reference) | 5B | 1280×704 | 3.02 | 3.64 | 2.64 | 3.83 | 2.63 | 2.36 |
+| Kiwi-Edit (Stage-2 Instruct-Only) | 5B | 1280×704 | 2.98 | 3.54 | **3.84** | 2.57 | **2.71** | 2.25 |
+| Kiwi-Edit (Stage-3 Instruct-Reference) | 5B | 1280×704 | **3.02** | 3.64 | 2.64 | **3.83** | 2.63 | **2.36** |
 
 ## 📊 ReCo-Data Preparation
 
